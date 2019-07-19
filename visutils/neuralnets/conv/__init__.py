@@ -8,3 +8,4 @@ from .resnet import ResNet
 from .resnet50 import ResNet50
 from .karpathynet import KarpathyNet
 from .vgg16 import VGG16
+from .customnnet import CustomNet

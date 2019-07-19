@@ -48,7 +48,7 @@ def get_argv():
     ap.add_argument(
         '-a', '--architecture', required = True, type = str,
         help = 'the architecture of the CNN to be trained: `alexnet`, `lenet`, `minivgg`, ' \
-            + '`karpathynet`, `resnet50` and `vgg16`'
+            + '`karpathynet`, `resnet50`, `vgg16` and `custom` (defined by user in visutils/neuralnets/conv/customnet.py)'
     )
     ap.add_argument(
         '-d', '--dataset', required = True, type = str,
@@ -168,6 +168,15 @@ def build_architecture(argv, width:int, height:int, depth:int, classes:int):
     elif argv.architecture == 'resnet50':
         from visutils.neuralnets.conv import ResNet50
         model = ResNet50.build(
+            width = width,
+            height = height,
+            depth = depth,
+            classes = classes
+        )
+    
+    elif argv.architecture == 'custom':
+        from visutils.neuralnets.conv import CustomNet
+        model = CustomNet.build(
             width = width,
             height = height,
             depth = depth,
